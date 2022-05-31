@@ -11,15 +11,29 @@ export default class extends Controller {
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
     });
     this.#addMarkersToMap();
+    this.#fitMapToMarkers();
   }
 
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds();
+
+    // Extend the 'LngLatBounds' to include every coordinate in the bounds result.
+    for (const coord of this.markersValue) {
+      bounds.extend([coord.lng, coord.lat]);
+    }
+
+    this.map.fitBounds(bounds, {
+      padding: 80,
+      duration: 0
+    });
+  }
+
+
   #addMarkersToMap() {
-    console.log(this.markersValue);
     this.markersValue.forEach((myMarker) => {
       new mapboxgl.Marker()
         .setLngLat([myMarker.lng, myMarker.lat])
         .addTo(this.map);
     });
-
   }
 }
