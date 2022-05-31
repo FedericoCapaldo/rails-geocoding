@@ -30,10 +30,16 @@ export default class extends Controller {
 
 
   #addMarkersToMap() {
-
     this.markersValue.forEach((myMarker) => {
+      const customMarkerIcon = document.createElement("div");
+      customMarkerIcon.className = "marker";
+      customMarkerIcon.style.backgroundImage = `url('${myMarker.image_url}')`;
+      customMarkerIcon.style.backgroundSize = "contain";
+      customMarkerIcon.style.width = "25px";
+      customMarkerIcon.style.height = "25px";
+
       const popup = new mapboxgl.Popup().setHTML(myMarker.info_window);
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(customMarkerIcon)
         .setLngLat([myMarker.lng, myMarker.lat])
         .setPopup(popup)
         .addTo(this.map);
