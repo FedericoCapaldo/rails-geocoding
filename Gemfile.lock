@@ -107,6 +107,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.1.1)
       sassc (~> 2.0)
+    geocoder (1.8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -114,9 +115,6 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     loofah (2.18.0)
@@ -249,7 +247,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   font-awesome-sass (~> 6.1)
-  jbuilder
+  geocoder
   jsbundling-rails
   pg (~> 1.1)
   puma (~> 5.0)
